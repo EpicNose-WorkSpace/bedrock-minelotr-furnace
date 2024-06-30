@@ -1,0 +1,38 @@
+{
+    "Addon": {
+        "EnchantSetting": {
+            "amplifier": 1
+        },
+        "PackResourceSortData": {
+            "4_customblocks:custom_furnace": {
+                "createTime": 1719150092.9151702,
+                "modifyTime": 1719150092.9151702
+            }
+        },
+        "PlayerEffectSetting": {
+            "amplifier": 1,
+            "duration": 10
+        },
+        "PresetInstanceTreeData": [
+
+        ]
+    },
+    "UI": {
+        "customPrefabGroupExpand": [
+
+        ],
+        "expandData": {
+            "prefab": {
+
+            },
+            "screen": {
+                "E:\\MCStudioDownload\\work\\x1105915229@163.com\\Cpp\\AddOn\\103aacee934c4c39b80038a57f9c851b\\CustomFurnaceMod_resource\\ui\\customFurnaceUI.json": [
+
+                ],
+                "E:\\MCStudioDownload\\work\\x1105915229@163.com\\Cpp\\AddOn\\103aacee934c4c39b80038a57f9c851b\\CustomFurnaceMod_resource\\ui\\neteaseCommonUI.json": [
+
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "Arena.Component.Namespace": "utmha",
+    "FirstTabSetting": 0,
+    "ShortItemSettings": [
+        "CustomFurnaceMod_resource\\ui",
+        "CustomFurnaceMod_behavior\\Presets",
+        "CustomFurnaceMod_behavior\\Parts",
+        "CustomFurnaceMod_behavior\\BoxData",
+        "CustomFurnaceMod_resource\\effects",
+        "CustomFurnaceMod_resource\\models",
+        "CustomFurnaceMod_resource\\textures"
+    ],
+    "Uluru.autoLayerDict": {
+
+    },
+    "Uluru.checkSuspectOldUI": true
+}

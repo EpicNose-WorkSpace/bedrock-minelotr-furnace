@@ -1,0 +1,53 @@
+{
+    "Account": "x1105915229@163.com",
+    "AssertCacheDir": "E:\\MCStudioDownload\\EngineAssert",
+    "BlockNums": [
+        0,
+        0
+    ],
+    "BornPoint": [
+        0,
+        0,
+        0
+    ],
+    "CanPublishResourceComponent": true,
+    "CodeEnable": false,
+    "CreateNew": true,
+    "CreateVersion": "2.12.0.699905",
+    "DCWebUrl": "https://x19apigatewayexpr.nie.netease.com",
+    "EditAddOnPaths": [
+
+    ],
+    "EditLogFilePath": "E:\\MCStudioDownload\\work\\editor\\edit.log",
+    "EditMaterialPaths": [
+
+    ],
+    "EditName": "熔炉demo项目参考",
+    "EditType": 2,
+    "EditVersion": "2.12.0.699905",
+    "EditorResourcePackPath": "E:\\Program Files (x86)\\Netease\\MCStudio\\data\\inner_res",
+    "ElkUrl": "https://x19mclexpr.nie.netease.com/client-log",
+    "GameType": 0,
+    "Id": "dfc0a38051354da6b5a5d53fa50e1d23",
+    "IsMap": false,
+    "NewEditCount": 4,
+    "OldComponents": [
+
+    ],
+    "OldEditCount": 0,
+    "ResourceIds": [
+        "4663898840871576388"
+    ],
+    "SaveBackAddOnPath": "E:\\PythonCode\\bedrock-diyfurnace-demo",
+    "SaveBackMapPath": null,
+    "Seed": "",
+    "ServerName": "EXPR",
+    "ShowGpuDriverTips": false,
+    "ShowGuide": false,
+    "Source": "import",
+    "StudioPort": 12769,
+    "StudioTempPath": "E:\\MCStudioDownload\\temp\\editorTemp",
+    "UserId": "50065",
+    "UserName": "EpicNose",
+    "WorldType": 1
+}
