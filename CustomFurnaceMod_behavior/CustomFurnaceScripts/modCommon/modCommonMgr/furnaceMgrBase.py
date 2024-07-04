@@ -35,7 +35,8 @@ class FurnaceManagerBase(object):
         # 可烧炼且燃烧时间为0时尝试消耗燃料获取燃烧时间
         if self.mLitTime == 0 and self.CanBurn():
             if self.mItems[1]:
-                self.mLitTime = self.mRecipeMgr.GetBurnDuration(self.mItems[1].get("itemName"))
+                # self.mLitTime = self.mRecipeMgr.GetBurnDuration(self.mItems[1].get("itemName"))
+                self.mLitTime = self.mRecipeMgr.GetBurnDuration(self.mItems[1].get("itemName"),self.mItems[1].get("auxValue"))
                 self.mLitDuration = self.mLitTime
                 if self.IsLit():
                     self.mItems[1]["count"] -= 1

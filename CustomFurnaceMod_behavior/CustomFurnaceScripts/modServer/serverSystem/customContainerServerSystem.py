@@ -65,7 +65,8 @@ class CustomContainerServerSystem(serverApi.GetServerSystemCls()):
         dimensionComp = compFactory.CreateDimension(playerId)
         dimension = dimensionComp.GetPlayerDimensionId()
         # 因为每帧都会tick到，所以加个判断UI已打开就不走后面逻辑
-        if blockName in self.mCustomContainer and not self.mCurOpenedBlock.get(playerId):
+        #未被使用过？
+        if blockName in self.mCustomContainer and not self.mCurOpenedBlock.get(playerId): #未被使用过？
             self.mCurOpenedBlock[playerId] = {"blockName": blockName, "blockPos": blockPos, "dimension": dimension}
             eventData = self.CreateEventData()
             eventData["blockName"] = blockName

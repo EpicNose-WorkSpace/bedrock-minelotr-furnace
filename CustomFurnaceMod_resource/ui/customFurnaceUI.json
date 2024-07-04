@@ -56,6 +56,13 @@
                                        }
                                     },
                                     {
+                                       "furnaceSlot3@neteaseCommonUI.itemBtn" : {
+                                          "$item_button_layer" : 14,
+                                          "$item_button_offset" : [ -40, 64 ],
+                                          "$item_button_size" : [ 32, 32 ]
+                                       }
+                                    },
+                                    {
                                        "resultName" : {
                                           "anchor_from" : "center",
                                           "anchor_to" : "center",
