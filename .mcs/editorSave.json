@@ -4,6 +4,10 @@
             "amplifier": 1
         },
         "PackResourceSortData": {
+            "2048_utmha:lotrenchant_move_speed": {
+                "createTime": 1720277481.0696175,
+                "modifyTime": 1720448569.2418928
+            },
             "4_customblocks:custom_furnace": {
                 "createTime": 1719150092.9151702,
                 "modifyTime": 1719150092.9151702
@@ -40,6 +44,9 @@
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel/bagContent",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel",
+                    "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot1",
+                    "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot3",
+                    "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot3/itemImg",
                     "/main/customContainerPanel/itemDetail"
                 ]
             }

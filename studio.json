@@ -22,7 +22,7 @@
     "EditMaterialPaths": [
 
     ],
-    "EditName": "熔炉demo项目参考",
+    "EditName": "熔炉demo项目+自定义附魔",
     "EditType": 2,
     "EditVersion": "2.12.0.699905",
     "EditorResourcePackPath": "E:\\Program Files (x86)\\Netease\\MCStudio\\data\\inner_res",
@@ -30,7 +30,7 @@
     "GameType": 0,
     "Id": "dfc0a38051354da6b5a5d53fa50e1d23",
     "IsMap": false,
-    "NewEditCount": 6,
+    "NewEditCount": 10,
     "OldComponents": [
 
     ],
@@ -45,7 +45,7 @@
     "ShowGpuDriverTips": false,
     "ShowGuide": false,
     "Source": "import",
-    "StudioPort": 10448,
+    "StudioPort": 12138,
     "StudioTempPath": "E:\\MCStudioDownload\\temp\\editorTemp",
     "UserId": "50065",
     "UserName": "EpicNose",

@@ -5,6 +5,14 @@
 ModName = "CustomFurnaceMod"
 ModVersion = "0.0.1"
 
+
+EnchantServerSystemName = "EnchantTestServerSystem"
+EnchantServerSystemClsPath = "CustomFurnaceScripts.modServer.serverSystem.customEnchant.enchantTestServerSystem.EnchantTestServerSystem"
+# # Client System
+# EnchantClientSystemName = "EnchantTestClientSystem"
+# EnchantClientSystemClsPath = "CustomFurnaceScripts.modClient.enchantTestClientSystem.EnchantTestClientSystem"
+
+
 # Server System
 ServerSystemName = "CustomFurnaceServerSystem"
 ServerSystemClsPath = "CustomFurnaceScripts.modServer.serverSystem.customFurnaceServer.CustomFurnaceServerSystem"
@@ -65,13 +73,13 @@ BURN_INTERVAL = 5
 FLY_ANIMATION_DURATION = 5
 # 背包分类
 INVENTORY_BAG = 1
-CUSTOM_CONTAINER_BAG = 3
+CUSTOM_CONTAINER_BAG = 2
 # 自定义熔炉槽前缀
 FURNACE_SLOT_PREFIX = "furnaceSlot"
 # 自定义容器列表
 CUSTOM_CONTAINER_LIST = ["customblocks:custom_furnace"]
 # 自定义熔炉槽数量，key为方块名,value为槽数
-FURNACE_SLOT_NUM_DICT = {"customblocks:custom_furnace": 3}
+FURNACE_SLOT_NUM_DICT = {"customblocks:custom_furnace": 4}
 # 自定义熔炉UI相关绑定信息, key为上面的自定义方块名，value为uiData
 # uiName: UI的json文件名
 # uiClassPath: UI的ScreenNode管理类

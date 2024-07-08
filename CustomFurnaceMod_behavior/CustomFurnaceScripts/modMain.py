@@ -16,6 +16,8 @@ class CustomFurnaceMod(object):
     @Mod.InitServer()
     def CustomFurnaceServerInit(self):
         serverApi.RegisterSystem(modConfig.ModName, modConfig.ServerSystemName, modConfig.ServerSystemClsPath)
+        serverApi.RegisterSystem(modConfig.ModName,modConfig.EnchantServerSystemName,modConfig.EnchantServerSystemClsPath)
+
 
     @Mod.InitClient()
     def CustomFurnaceClientInit(self):
