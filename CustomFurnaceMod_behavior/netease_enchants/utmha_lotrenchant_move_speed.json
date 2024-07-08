@@ -1,0 +1,21 @@
+{
+    "netease:enchant": {
+        "cost": [
+            3
+        ],
+        "description": "enchantment.minelotr.lotrenchant_move_speed",
+        "frequency": "common",
+        "identifier": "utmha:lotrenchant_move_speed",
+        "incompatible": [
+
+        ],
+        "is_curse": false,
+        "is_discoverable": true,
+        "is_lootable": true,
+        "is_treasure_only": false,
+        "max_level": 1,
+        "primary_slots": [
+            "all"
+        ]
+    }
+}
