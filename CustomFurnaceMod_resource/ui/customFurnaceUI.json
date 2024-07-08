@@ -44,7 +44,7 @@
                                     {
                                        "furnaceSlot1@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 10,
-                                          "$item_button_offset" : [ -40, 16 ],
+                                          "$item_button_offset" : [ -16, 16 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
@@ -58,7 +58,7 @@
                                     {
                                        "furnaceSlot3@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 14,
-                                          "$item_button_offset" : [ -40, 64 ],
+                                          "$item_button_offset" : [ -64, 16 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
@@ -79,16 +79,32 @@
                                        }
                                     },
                                     {
+                                       "enchantName" : {
+                                          "anchor_from" : "center",
+                                          "anchor_to" : "center",
+                                          "color" : [ 0, 0, 0 ],
+                                          "controls" : [],
+                                          "layer" : 23,
+                                          "offset" : [ -64, 42 ],
+                                          "shadow" : false,
+                                          "size" : [ 64, "default" ],
+                                          "text" : "附魔书",
+                                          "text_alignment" : "center",
+                                          "type" : "label",
+                                          "visible" : true
+                                       }
+                                    },
+                                    {
                                        "fuelName" : {
                                           "anchor_from" : "center",
                                           "anchor_to" : "center",
                                           "color" : [ 0, 0, 0 ],
                                           "controls" : [],
                                           "layer" : 23,
-                                          "offset" : [ -40, 42 ],
+                                          "offset" : [ -16, 42 ],
                                           "shadow" : false,
                                           "size" : [ 64, "default" ],
-                                          "text" : "燃料",
+                                          "text" : "材料",
                                           "text_alignment" : "center",
                                           "type" : "label",
                                           "visible" : true
