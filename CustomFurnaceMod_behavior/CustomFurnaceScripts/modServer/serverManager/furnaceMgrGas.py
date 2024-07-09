@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-from CustomFurnaceScripts.modCommon.modCommonMgr.furnaceRecipeMgr import FurnaceRecipeManager
-from CustomFurnaceScripts.modCommon import modConfig
-from CustomFurnaceScripts.modCommon.modCommonMgr.furnaceMgrBase import FurnaceManagerBase
-from CustomFurnaceScripts.modCommon.modCommonUtils import itemUtils
-
+from ...modCommon.modCommonMgr.furnaceRecipeMgr import FurnaceRecipeManager
+from ...modCommon import modConfig
+from ...modCommon.modCommonMgr.furnaceMgrBase import FurnaceManagerBase
+from ...modCommon.modCommonUtils import itemUtils
+from mod_log import logger
 
 class FurnaceManagerGas(FurnaceManagerBase):
     """继承自FurnaceManagerBase基类，在这里可以覆写CanBurn函数和Burn函数来实现不同烧炼逻辑"""
@@ -61,6 +61,12 @@ class FurnaceManagerGas(FurnaceManagerBase):
                 return False
             return True
         # 如果为原料槽可放置
-        if slot > 1:
+        if slot == 2:
+            return True
+        if slot == 3:
+            if item and not self.mRecipeMgr.IsEnchatBook(item["itemName"]):
+                return False
             return True
         return False
+
+

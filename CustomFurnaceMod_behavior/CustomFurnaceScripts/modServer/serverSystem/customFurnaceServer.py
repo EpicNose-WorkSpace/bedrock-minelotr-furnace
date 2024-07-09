@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 #
 import random
-from CustomFurnaceScripts.modCommon import modConfig
-from CustomFurnaceScripts.modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
-from CustomFurnaceScripts.modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
-from CustomFurnaceScripts.modCommon.modCommonUtils import itemUtils
+from ...modCommon import modConfig
+from ...modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
+from ...modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
+from ...modCommon.modCommonUtils import itemUtils
 
 import mod.server.extraServerApi as serverApi
 from mod_log import logger

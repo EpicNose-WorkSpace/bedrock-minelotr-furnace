@@ -4,9 +4,9 @@ import random
 
 import mod.server.extraServerApi as serverApi
 from mod_log import logger
-from CustomFurnaceScripts.modCommon import modConfig
-from CustomFurnaceScripts.modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
-from CustomFurnaceScripts.modCommon.modCommonUtils import itemUtils
+from ...modCommon import modConfig
+from ...modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
+from ...modCommon.modCommonUtils import itemUtils
 
 minecraftEnum = serverApi.GetMinecraftEnum()
 compFactory = serverApi.GetEngineCompFactory()

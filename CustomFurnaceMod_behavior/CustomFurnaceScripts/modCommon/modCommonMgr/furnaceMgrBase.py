@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-from CustomFurnaceScripts.modCommon.modCommonMgr.recipeMgrBase import RecipeManagerBase
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modCommon.modCommonMgr.recipeMgrBase import RecipeManagerBase
+from ...modCommon import modConfig
 from mod_log import logger
 
 class FurnaceManagerBase(object):

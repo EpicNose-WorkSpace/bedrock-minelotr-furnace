@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from CustomFurnaceScripts.modCommon.modCommonMgr.recipeMgrBase import RecipeManagerBase
-
+from ...modCommon.modCommonMgr.recipeMgrBase import RecipeManagerBase
+from mod_log import logger
 class FurnaceRecipeManager(RecipeManagerBase):
     # 配方在这里配置
     # 这里举例的是单个烧炼槽生成单个生成物的例子，开发者可以根据自己理解进行修改成多对一或多对多配方
@@ -32,3 +32,9 @@ class FurnaceRecipeManager(RecipeManagerBase):
     def IsFuelItem(self, fuelItem):
         """判断item是否为燃料"""
         return fuelItem in self.mFuelList
+
+    def IsEnchatBook(self, enchatbookItem):
+        # logger.info("aaaaaaaaaaaaaaaaaaa "+enchatbookItem)
+        if enchatbookItem == "minecraft:enchanted_book":
+            return True
+        return False
