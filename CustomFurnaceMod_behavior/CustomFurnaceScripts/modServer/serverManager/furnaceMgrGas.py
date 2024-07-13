@@ -4,7 +4,8 @@ from ...modCommon import modConfig
 from ...modCommon.modCommonMgr.furnaceMgrBase import FurnaceManagerBase
 from ...modCommon.modCommonUtils import itemUtils
 from mod_log import logger
-
+import mod.server.extraServerApi as serverApi
+# from ...modServer.serverSystem.customFurnaceServer import CustomFurnaceServerSystem
 class FurnaceManagerGas(FurnaceManagerBase):
     """继承自FurnaceManagerBase基类，在这里可以覆写CanBurn函数和Burn函数来实现不同烧炼逻辑"""
     def __init__(self):
@@ -34,6 +35,7 @@ class FurnaceManagerGas(FurnaceManagerBase):
     def Burn(self):
         """烧炼过程，消耗原料生成烧炼物"""
         if not self.CanBurn():
+
             return
         resultItem = self.mRecipeMgr.GetFurnaceResult(self.mItems[2].get("itemName"))
         if not self.mItems[0]:
@@ -64,9 +66,38 @@ class FurnaceManagerGas(FurnaceManagerBase):
         if slot == 2:
             return True
         if slot == 3:
-            if item and not self.mRecipeMgr.IsEnchatBook(item["itemName"]):
+            if item and not self.IsEnchatBook(item["itemName"]):
                 return False
             return True
         return False
 
+    #用于判断第四格是不是附魔书
+    def IsEnchatBook(self, enchatbookItem):
+        # logger.info("aaaaaaaaaaaaaaaaaaa "+enchatbookItem)
+        if enchatbookItem == "minecraft:enchanted_book":
+            return True
+        return False
 
+    def TryEnchant(self):
+        # comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+        # comp.AddModEnchantToInvItem(0, "customenchant", 2)
+        pass
+
+
+
+    # def UseEnchantBook(self):  #在不烧的时候执行
+    #     if self.mItems[3] and self.mItems[2] and (not self.mItems[1]):
+    #         key_found = None
+    #         for key, value in CustomFurnaceServerSystem.mCurOpenedBlock.items():
+    #             if value == self:
+    #                 key_found = key
+    #                 break
+    #         if key_found is not None:
+    #             blockPos = key_found[:3]
+    #             dimension = key_found[-1]
+    #             for playerId, blockInfo in CustomContainerServerSystem.mCurOpenedBlock.items():
+    #                 if blockPos in blockInfo.values() and dimension in blockInfo.values():
+    #                     comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+    #                     comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+    #                     break
+    #     return True

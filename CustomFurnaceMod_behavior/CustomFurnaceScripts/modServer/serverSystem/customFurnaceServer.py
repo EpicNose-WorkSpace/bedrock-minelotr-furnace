@@ -12,6 +12,10 @@ from mod_log import logger
 minecraftEnum = serverApi.GetMinecraftEnum()
 compFactory = serverApi.GetEngineCompFactory()
 
+
+
+
+
 class CustomFurnaceServerSystem(CustomContainerServerSystem):
     def __init__(self, namespace, name):
         super(CustomFurnaceServerSystem, self).__init__(namespace, name)
@@ -19,6 +23,14 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         self.mCustomFurnaceDict = {}
         # 初始化可以进行右键打开的容器列表
         self.mCustomContainer = modConfig.CUSTOM_CONTAINER_LIST
+
+
+    def IsEnchantBook(self,enchatbookItem):
+        # logger.info("aaaaaaaaaaaaaaaaaaa "+enchatbookItem)
+        if enchatbookItem == "minecraft:enchanted_book":
+            return True
+        else:
+            return False
 
     def ListenEvent(self):
         super(CustomFurnaceServerSystem, self).ListenEvent()
@@ -134,7 +146,11 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                         return False
                 furnaceMgr.UpdateSlotData(fromSlot, toItem)
                 blockEntityData[fromSlot] = toItem
+
                 itemComp.SpawnItemToPlayerInv(fromItem, playerId, toSlot)
+                #在这增加一个附魔的逻辑
+                self.TryToEnchantAfterSwap(playerId,furnaceMgr,fromItem,toSlot)
+
             # 从背包放置物品到熔炉
             else:
                 furnaceMgr.UpdateSlotData(toSlot, fromItem)
@@ -159,3 +175,10 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         furnaceMgr.UpdateSlotData(slot, None)
         blockEntityData[slot] = None
         return True
+
+    def TryToEnchantAfterSwap(self,playerId,furnaceMgr,fromItem,toSlot):
+        if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+            comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+            comp.AddModEnchantToInvItem(toSlot, "utmha:lotrenchant_move_speed", 1)
+        return True
+

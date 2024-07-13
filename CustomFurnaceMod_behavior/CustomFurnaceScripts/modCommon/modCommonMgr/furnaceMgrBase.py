@@ -2,6 +2,10 @@
 from ...modCommon.modCommonMgr.recipeMgrBase import RecipeManagerBase
 from ...modCommon import modConfig
 from mod_log import logger
+# import mod.server.extraServerApi as serverApi
+# from ...modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
+#
+
 
 class FurnaceManagerBase(object):
     def __init__(self):
@@ -10,7 +14,7 @@ class FurnaceManagerBase(object):
         self.mLitDuration = 0
         self.mCookingProgress = 0
         self.mBurnInterval = modConfig.BURN_INTERVAL * 20
-        self.mItems = [None, None, None]
+        self.mItems = [None, None, None, None]
         self.mRecipeMgr = RecipeManagerBase()
         self.mBlockName = ""
 
@@ -93,3 +97,21 @@ class FurnaceManagerBase(object):
 
     def GetBlockName(self):
         return self.mBlockName
+
+
+    # def UseEnchantBook(self):  #在不烧的时候执行
+    #     if self.mItems[3] and self.mItems[2] and (not self.mItems[1]):
+    #         key_found = None
+    #         for key, value in CustomFurnaceServerSystem.mCurOpenedBlock.items():
+    #             if value == self:
+    #                 key_found = key
+    #                 break
+    #         if key_found is not None:
+    #             blockPos = key_found[:3]
+    #             dimension = key_found[-1]
+    #             for playerId, blockInfo in CustomContainerServerSystem.mCurOpenedBlock.items():
+    #                 if blockPos in blockInfo.values() and dimension in blockInfo.values():
+    #                     comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+    #                     comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+    #                     break
+    #     return True

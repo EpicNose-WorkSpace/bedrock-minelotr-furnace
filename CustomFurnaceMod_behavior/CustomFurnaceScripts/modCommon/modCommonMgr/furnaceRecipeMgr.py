@@ -33,8 +33,4 @@ class FurnaceRecipeManager(RecipeManagerBase):
         """判断item是否为燃料"""
         return fuelItem in self.mFuelList
 
-    def IsEnchatBook(self, enchatbookItem):
-        # logger.info("aaaaaaaaaaaaaaaaaaa "+enchatbookItem)
-        if enchatbookItem == "minecraft:enchanted_book":
-            return True
-        return False
+
