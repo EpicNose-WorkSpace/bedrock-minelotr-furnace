@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from mod_log import logger
-from CustomFurnaceScripts.modCommon import modConfig
-from CustomFurnaceScripts.modClient.ui.customContainerUIBase import CustomContainerUIScreenBase
+from ...modCommon import modConfig
+from ...modClient.ui.customContainerUIBase import CustomContainerUIScreenBase
 
 
 class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
@@ -72,3 +72,6 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
                     slotPath = "{0}/{1}".format(self.mRightPanelPath, itemSlot)
                     self.mBagInfo[slotPath] = {"slot": itemSlot, "item": itemDict}
                     self.SetSlotUI(slotPath, itemDict)
+    #增加自己自定义的按钮注册
+    def RegisterButtonEvents(self):
+        super(CustomFurnaceUIScreen, self).RegisterButtonEvents()

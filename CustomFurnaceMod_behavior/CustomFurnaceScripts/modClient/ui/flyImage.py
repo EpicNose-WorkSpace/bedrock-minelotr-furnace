@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modCommon import modConfig
 
 
 class FlyImage(object):

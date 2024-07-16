@@ -2,16 +2,16 @@
 
 import time
 from mod_log import logger
-from CustomFurnaceScripts.modCommon import modConfig
-from CustomFurnaceScripts.modClient.clientUtils import apiUtil
+from ...modCommon import modConfig
+from ...modClient.clientUtils import apiUtil
 
 import mod.client.extraClientApi as clientApi
 
 from mod.client.ui.screenNode import ScreenNode
 from mod.client.ui.screenController import ViewBinder, ViewRequest
-from CustomFurnaceScripts.modClient.clientUtils.containerInteractionStateMachine import ContainerInteractionStateMachine, NodeId, ButtonEventType
-from CustomFurnaceScripts.modClient.ui.flyImage import FlyImage
-from CustomFurnaceScripts.modCommon.modCommonUtils import itemUtils
+from ...modClient.clientUtils.containerInteractionStateMachine import ContainerInteractionStateMachine, NodeId, ButtonEventType
+from ...modClient.ui.flyImage import FlyImage
+from ...modCommon.modCommonUtils import itemUtils
 
 compFactory = clientApi.GetEngineCompFactory()
 
@@ -138,6 +138,7 @@ class CustomContainerUIScreenBase(ScreenNode):
                         flyImg.Release()
                         self.SetVisible(flyImg.GetPath(), False)
 
+    #这个是界面左边的物品栏的每个按钮的回调函数
     def OnButtonTouch(self, args):
         touchEventEnum = clientApi.GetMinecraftEnum().TouchEvent
         touchEvent = args["TouchEvent"]

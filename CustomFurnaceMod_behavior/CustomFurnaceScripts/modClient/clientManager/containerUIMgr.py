@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modCommon import modConfig
 from mod_log import logger  # 用来打印规范的log
 import mod.client.extraClientApi as clientApi
 
