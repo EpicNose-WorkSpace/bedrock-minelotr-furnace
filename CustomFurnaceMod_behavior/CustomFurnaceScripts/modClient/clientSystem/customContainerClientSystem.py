@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import mod.client.extraClientApi as clientApi
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modCommon import modConfig
 from mod_log import logger
-from CustomFurnaceScripts.modClient.clientManager.containerUIMgr import UIMgr
+from ...modClient.clientManager.containerUIMgr import UIMgr
 
 
 class CustomContainerClientSystem(clientApi.GetClientSystemCls()):

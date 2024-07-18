@@ -50,6 +50,7 @@ UiInitFinishedEvent = 'UiInitFinished'
 CloseCustomFurnaceEvent = "CloseCustomFurnaceEvent"
 OnItemSwapClientEvent = "OnItemSwapClientEvent"
 OnItemDropClientEvent = "OnItemDropClientEvent"
+onForgeButtonClickDownClientEvent = "onForgeButtonClickDown"
 
 # ————————————————————————————————————————————————————————————————————————————————————————————————————
 # Server Component 服务端组件

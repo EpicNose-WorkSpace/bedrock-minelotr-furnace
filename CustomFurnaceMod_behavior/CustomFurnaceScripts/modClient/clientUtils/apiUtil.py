@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import mod.client.extraClientApi as clientApi
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modCommon import modConfig
 
 _clientModSystem = None
 

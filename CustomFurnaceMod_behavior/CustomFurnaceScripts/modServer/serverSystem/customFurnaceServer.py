@@ -5,7 +5,7 @@ from ...modCommon import modConfig
 from ...modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
 from ...modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
 from ...modCommon.modCommonUtils import itemUtils
-
+import mod.client.extraClientApi as clientApi
 import mod.server.extraServerApi as serverApi
 from mod_log import logger
 
@@ -38,10 +38,13 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(), modConfig.ServerBlockEntityTickEvent,
                             self, self.OnBlockEntityTick)
 
+        #监听客户端引擎事件
+        self.ListenForEvent(clientApi.GetEngineNamespace(),clientApi.GetEngineSystemName(),modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
     def UnListenEvent(self):
         super(CustomFurnaceServerSystem, self).UnListenEvent()
         self.UnListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(), modConfig.ServerBlockEntityTickEvent,
                               self, self.OnBlockEntityTick)
+        self.UnListenForEvent(clientApi.GetEngineNamespace(),clientApi.GetEngineSystemName(),modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
 
     def GetCustomContainerItems(self, dimension, blockName, blockPos):
         # 覆写基类方法，获取自定义熔炉中blockEntityData中的数据
@@ -149,7 +152,7 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
 
                 itemComp.SpawnItemToPlayerInv(fromItem, playerId, toSlot)
                 #在这增加一个附魔的逻辑
-                self.TryToEnchantAfterSwap(playerId,furnaceMgr,fromItem,toSlot)
+                # self.TryToEnchantAfterSwap(playerId,furnaceMgr,fromItem,toSlot)
 
             # 从背包放置物品到熔炉
             else:
@@ -176,9 +179,32 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         blockEntityData[slot] = None
         return True
 
-    def TryToEnchantAfterSwap(self,playerId,furnaceMgr,fromItem,toSlot):
-        if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
-            comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
-            comp.AddModEnchantToInvItem(toSlot, "utmha:lotrenchant_move_speed", 1)
-        return True
+
+
+    #这里要注册个事件 监听客户端按下按钮
+    # def TryToEnchantAfterSwap(self,playerId,furnaceMgr,fromItem,toSlot):
+    #     if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+    #         comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+    #         comp.AddModEnchantToInvItem(toSlot, "utmha:lotrenchant_move_speed", 1)
+    #     return True
+
+
+    def TryToEnchantAfterSwap(self,args):
+        print "运行4"
+        if self.mCurOpenedBlock[args.get("playerId")]:
+            blockInfo=self.mCurOpenedBlock[args.get("playerId")]
+            blockPos = blockInfo.get("blockPos")
+            dimension = blockInfo.get("dimension")
+            blockKey = (blockPos[0], blockPos[1], blockPos[2], dimension)
+            print "运行3"
+            if self.mCustomFurnaceDict.get(blockKey):
+                furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
+                print "运行2"
+                if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")) & furnaceMgr.mItems[0]:
+                    comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
+                    comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+                    print "运行1"
+                return True
+
+
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from CustomFurnaceScripts.modClient.clientSystem.customContainerClientSystem import CustomContainerClientSystem
-from CustomFurnaceScripts.modCommon import modConfig
+from ...modClient.clientSystem.customContainerClientSystem import CustomContainerClientSystem
+from ...modCommon import modConfig
 
 
 class CustomFurnaceClientSystem(CustomContainerClientSystem):

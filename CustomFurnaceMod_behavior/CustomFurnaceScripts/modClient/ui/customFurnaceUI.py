@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from mod_log import logger
+
+from ..clientUtils import apiUtil
 from ...modCommon import modConfig
 from ...modClient.ui.customContainerUIBase import CustomContainerUIScreenBase
-
+import mod.client.extraClientApi as clientApi
 
 class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
 
@@ -11,6 +13,7 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         super(CustomFurnaceUIScreen, self).__init__(namespace, name, param)
         self.mFireMaskPath = self.mRightPanelPath + "/fire/fireMask"
         self.mArrowMaskPath = self.mRightPanelPath + "/arrow/arrowMask"
+        self.mForgeButtonPath = self.mRightPanelPath+"/forgeBtn"
         # 管理燃烧状态相关数据
         self.mIsLit = False
         self.mIsCooking = False
@@ -72,6 +75,38 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
                     slotPath = "{0}/{1}".format(self.mRightPanelPath, itemSlot)
                     self.mBagInfo[slotPath] = {"slot": itemSlot, "item": itemDict}
                     self.SetSlotUI(slotPath, itemDict)
+
+    def UpdateBagUI(self, args):
+        # print "参数参数"
+        # print args
+        # print "参数参数"
+
+        super(CustomFurnaceUIScreen, self).UpdateBagUI(args)
+
+        self.RegisterForgeButton()
+
+
+
     #增加自己自定义的按钮注册
-    def RegisterButtonEvents(self):
-        super(CustomFurnaceUIScreen, self).RegisterButtonEvents()
+    def RegisterForgeButton(self):
+        # super(CustomFurnaceUIScreen, self).RegisterButtonEvents()
+        # self.AddTouchEventHandler(self.mDropAreaPath, self.onForgeButtonClick, {"isSwallow": True})
+        # print "锻造按钮路径"
+        # print self.mForgeButtonPath
+        # print "锻造按钮路径"
+        buttonUIControl = self.GetBaseUIControl(self.mForgeButtonPath).asButton()
+        buttonUIControl.AddTouchEventParams({"isSwallow": True})
+        buttonUIControl.SetButtonTouchDownCallback(self.onForgeButtonClick)
+
+    def onForgeButtonClick(self,args):
+        eventData = apiUtil.GetModClientSystem().CreateEventData()
+        eventData["playerId"] = apiUtil.GetModClientSystem().GetPlayerId()
+        apiUtil.GetModClientSystem().NotifyToServer(modConfig.onForgeButtonClickDownClientEvent, eventData)
+        print "已发送锻造按钮点击事件"
+        # touchEventEnum = clientApi.GetMinecraftEnum().TouchEvent
+        # touchEvent = args["TouchEvent"]
+        # if touchEvent == touchEventEnum.TouchDown:
+        #     self.mContainerStateMachine.ReceiveEvent(args["ButtonPath"], ButtonEventType.Clicked)
+
+        # pass
+
