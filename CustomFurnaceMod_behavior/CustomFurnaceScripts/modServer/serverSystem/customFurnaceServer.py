@@ -39,12 +39,12 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                             self, self.OnBlockEntityTick)
 
         #监听客户端引擎事件
-        self.ListenForEvent(clientApi.GetEngineNamespace(),clientApi.GetEngineSystemName(),modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
+        self.ListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
     def UnListenEvent(self):
         super(CustomFurnaceServerSystem, self).UnListenEvent()
         self.UnListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(), modConfig.ServerBlockEntityTickEvent,
                               self, self.OnBlockEntityTick)
-        self.UnListenForEvent(clientApi.GetEngineNamespace(),clientApi.GetEngineSystemName(),modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
+        self.UnListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
 
     def GetCustomContainerItems(self, dimension, blockName, blockPos):
         # 覆写基类方法，获取自定义熔炉中blockEntityData中的数据
@@ -200,11 +200,13 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
             if self.mCustomFurnaceDict.get(blockKey):
                 furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
                 print "运行2"
-                if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")) & furnaceMgr.mItems[0]:
-                    comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
-                    comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
-                    print "运行1"
-                return True
+                if (furnaceMgr.mItems[3] is not None) & (furnaceMgr.mItems[0] is not None):
+                    if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+                        comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
+                        comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+                        print "运行1"
+                    return True
+
 
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from mod.client.ui.viewBinder import ViewBinder
 from mod_log import logger
 
 from ..clientUtils import apiUtil
@@ -110,3 +110,14 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
 
         # pass
 
+    @ViewBinder.binding(ViewBinder.BF_ButtonClickDown)
+    def forgeButton(self, args):
+        print "执行数据绑定函数"
+        # 参数args含有按钮的信息，可以尝试打印来查看
+        # 多个按钮也可以使用同一个函数，args中的路径可以用于判断你按下了哪个按钮
+        # 已经在json中填写"bindings"为集合的按钮，拥有额外的参数：所在集合名和序数，你也可以通过打印查看他们的路径，其控件名为 控件库控件名+index，其路径就在gird之下
+
+        # self.times += 1
+        # if self.times > maxInt:
+        #     self.times = 0
+        # self.TestDict = List[self.times]

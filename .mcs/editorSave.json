@@ -23,11 +23,17 @@
     },
     "UI": {
         "customPrefabGroupExpand": [
-
+            "customFurnaceUI"
         ],
         "expandData": {
             "prefab": {
-
+                "customFurnaceUI.customFurnacePanel": [
+                    "/netease_prefab_screen",
+                    "/netease_prefab_screen/customFurnacePanel",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel"
+                ]
             },
             "screen": {
                 "E:\\MCStudioDownload\\work\\x1105915229@163.com\\Cpp\\AddOn\\103aacee934c4c39b80038a57f9c851b\\CustomFurnaceMod_resource\\ui\\customFurnaceUI.json": [
@@ -38,6 +44,7 @@
                 ],
                 "E:\\PythonCode\\bedrock-diyfurnace-demo\\CustomFurnaceMod_resource\\ui\\customFurnaceUI.json": [
                     "/main",
+                    "/main/customContainerPanel",
                     "/main/customContainerPanel/headerContentStackPanel",
                     "/main/customContainerPanel/headerContentStackPanel/header",
                     "/main/customContainerPanel/headerContentStackPanel/header/closeBtn",
@@ -47,6 +54,7 @@
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel/bagContent/dropArea",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel/fire1",
+                    "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel/forgeBtn",
                     "/main/customContainerPanel/dropArea"
                 ],
                 "E:\\PythonCode\\bedrock-diyfurnace-demo\\CustomFurnaceMod_resource\\ui\\neteaseCommonUI.json": [
