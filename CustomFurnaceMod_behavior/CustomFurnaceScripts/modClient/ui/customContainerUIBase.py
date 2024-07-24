@@ -63,8 +63,8 @@ class CustomContainerUIScreenBase(ScreenNode):
             return
         self.mAlreadyRegisterEvent = True
         for path in self.mBagInfo.keys():
-            # print "背包格子路径"
-            # print path
+            print "背包格子路径"
+            print path
             self.AddTouchEventHandler(path, self.OnButtonTouch, {"isSwallow": True})
         self.AddTouchEventHandler(self.mCloseBtnPath, self.OnCloseClick, {"isSwallow": True})
         self.AddTouchEventHandler(self.mDropAreaPath, self.OnDropClick, {"isSwallow": True})
