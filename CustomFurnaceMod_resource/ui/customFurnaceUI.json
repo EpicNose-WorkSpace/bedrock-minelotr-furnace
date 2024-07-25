@@ -199,7 +199,7 @@
                                           "$nine_slice_right" : 0,
                                           "$nine_slice_top" : 0,
                                           "$nineslice_size" : [ 0, 0, 0, 0 ],
-                                          "$pressed_button_name" : "%netease_editor_template_namespace.click",
+                                          "$pressed_button_name" : "%customFurnaceUI.forgeButton",
                                           "$pressed_texture" : "textures/netease/common/button/pressed",
                                           "$texture_layer" : 2,
                                           "bindings" : [
@@ -209,7 +209,7 @@
                                                 "binding_type" : "collection_details"
                                              }
                                           ],
-                                          "button_mappings" : [],
+                                          
                                           "controls" : [
                                              {
                                                 "default@netease_editor_template_namespace.default" : {}

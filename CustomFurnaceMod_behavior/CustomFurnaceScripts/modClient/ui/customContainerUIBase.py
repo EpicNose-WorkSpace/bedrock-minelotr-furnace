@@ -8,13 +8,14 @@ from ...modClient.clientUtils import apiUtil
 import mod.client.extraClientApi as clientApi
 
 from mod.client.ui.screenNode import ScreenNode
-from mod.client.ui.screenController import ViewBinder, ViewRequest
+# from mod.client.ui.screenController import ViewBinder, ViewRequest
 from ...modClient.clientUtils.containerInteractionStateMachine import ContainerInteractionStateMachine, NodeId, ButtonEventType
 from ...modClient.ui.flyImage import FlyImage
 from ...modCommon.modCommonUtils import itemUtils
 
 compFactory = clientApi.GetEngineCompFactory()
-
+ViewBinder = clientApi.GetViewBinderCls()
+ViewRequest = clientApi.GetViewViewRequestCls()
 class CustomContainerUIScreenBase(ScreenNode):
 
     def __init__(self, namespace, name, param):
@@ -63,8 +64,8 @@ class CustomContainerUIScreenBase(ScreenNode):
             return
         self.mAlreadyRegisterEvent = True
         for path in self.mBagInfo.keys():
-            print "背包格子路径"
-            print path
+            # print "背包格子路径"
+            # print path
             self.AddTouchEventHandler(path, self.OnButtonTouch, {"isSwallow": True})
         self.AddTouchEventHandler(self.mCloseBtnPath, self.OnCloseClick, {"isSwallow": True})
         self.AddTouchEventHandler(self.mDropAreaPath, self.OnDropClick, {"isSwallow": True})
