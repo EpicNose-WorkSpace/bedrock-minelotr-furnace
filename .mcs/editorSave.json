@@ -31,8 +31,13 @@
                     "/netease_prefab_screen",
                     "/netease_prefab_screen/customFurnacePanel",
                     "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/header",
                     "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel"
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot2/itemImg",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot1/itemImg",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot0/itemImg",
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot3/itemImg"
                 ]
             },
             "screen": {
@@ -43,13 +48,9 @@
 
                 ],
                 "E:\\PythonCode\\bedrock-diyfurnace-demo\\CustomFurnaceMod_resource\\ui\\customFurnaceUI.json": [
-                    "/main",
                     "/main/customContainerPanel",
                     "/main/customContainerPanel/headerContentStackPanel",
-                    "/main/customContainerPanel/headerContentStackPanel/header",
-                    "/main/customContainerPanel/headerContentStackPanel/header/closeBtn",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel",
-                    "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel/bagContent",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/leftPanel/bagContent/dropArea",
                     "/main/customContainerPanel/headerContentStackPanel/contentPanel/rightPanel",

@@ -5,7 +5,7 @@
       "controls" : [
          {
             "headerContentStackPanel" : {
-               "$header_name" : "自定义熔炉",
+               "$header_name" : "工匠锻造",
                "controls" : [
                   {
                      "header@neteaseCommonUI.header" : {}
@@ -37,28 +37,28 @@
                                     {
                                        "furnaceSlot2@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 6,
-                                          "$item_button_offset" : [ -40, -48 ],
+                                          "$item_button_offset" : [ -100.0, -48.0 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
                                     {
                                        "furnaceSlot1@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 10,
-                                          "$item_button_offset" : [ -16, 16 ],
+                                          "$item_button_offset" : [ -32.0, -20.0 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
                                     {
                                        "furnaceSlot0@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 14,
-                                          "$item_button_offset" : [ 42, -16 ],
+                                          "$item_button_offset" : [ 42.0, -48.0 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
                                     {
                                        "furnaceSlot3@neteaseCommonUI.itemBtn" : {
                                           "$item_button_layer" : 14,
-                                          "$item_button_offset" : [ -64, 16 ],
+                                          "$item_button_offset" : [ -32.0, -74.0 ],
                                           "$item_button_size" : [ 32, 32 ]
                                        }
                                     },
@@ -69,7 +69,7 @@
                                           "color" : [ 0, 0, 0 ],
                                           "controls" : [],
                                           "layer" : 23,
-                                          "offset" : [ 42, -42 ],
+                                          "offset" : [ 42, -24.0 ],
                                           "shadow" : false,
                                           "size" : [ 64, "default" ],
                                           "text" : "结果",
@@ -85,7 +85,7 @@
                                           "color" : [ 0, 0, 0 ],
                                           "controls" : [],
                                           "layer" : 23,
-                                          "offset" : [ -64, 42 ],
+                                          "offset" : [ -32.0, -98.0 ],
                                           "shadow" : false,
                                           "size" : [ 64, "default" ],
                                           "text" : "附魔书",
@@ -101,7 +101,7 @@
                                           "color" : [ 0, 0, 0 ],
                                           "controls" : [],
                                           "layer" : 23,
-                                          "offset" : [ -16, 42 ],
+                                          "offset" : [ -32.0, 4.0 ],
                                           "shadow" : false,
                                           "size" : [ 64, "default" ],
                                           "text" : "材料",
@@ -117,7 +117,7 @@
                                           "color" : [ 0, 0, 0 ],
                                           "controls" : [],
                                           "layer" : 23,
-                                          "offset" : [ -40, -74 ],
+                                          "offset" : [ -100.0, -24.0 ],
                                           "shadow" : false,
                                           "size" : [ 64, "default" ],
                                           "text" : "输入",
@@ -147,8 +147,8 @@
                                              }
                                           ],
                                           "layer" : 18,
-                                          "offset" : [ -40, -16 ],
-                                          "size" : [ 13, 13 ],
+                                          "offset" : [ -33.50, -49.0 ],
+                                          "size" : [ 20, 15 ],
                                           "texture" : "textures/ui/flame_img",
                                           "type" : "image",
                                           "visible" : true
@@ -175,7 +175,7 @@
                                              }
                                           ],
                                           "layer" : 20,
-                                          "offset" : [ 0, -16 ],
+                                          "offset" : [ 0, -48.0 ],
                                           "size" : [ 22, 15 ],
                                           "texture" : "textures/ui/arrow_img",
                                           "type" : "image",
@@ -209,7 +209,6 @@
                                                 "binding_type" : "collection_details"
                                              }
                                           ],
-                                          
                                           "controls" : [
                                              {
                                                 "default@netease_editor_template_namespace.default" : {}
@@ -228,10 +227,34 @@
                                           "hover_control" : "hover",
                                           "is_handle_button_move_event" : true,
                                           "layer" : 2,
-                                          "offset" : [ 64.50, -106.50 ],
+                                          "offset" : [ 64.50, 18.50 ],
                                           "pressed_control" : "pressed",
                                           "size" : [ "0.0%+67.0px", "0.0%+25.0px" ],
                                           "type" : "button"
+                                       }
+                                    },
+                                    {
+                                       "plus" : {
+                                          "clip_direction" : "left",
+                                          "clip_ratio" : 0.0,
+                                          "color" : [ 0.7176470588235294, 0.7176470588235294, 0.7176470588235294 ],
+                                          "layer" : 1,
+                                          "offset" : [ -65.50, -48.0 ],
+                                          "size" : [ 22, 23 ],
+                                          "texture" : "textures/ui/forge_plus",
+                                          "type" : "image"
+                                       }
+                                    },
+                                    {
+                                       "enchantResult" : {
+                                          "font_type" : "default",
+                                          "layer" : 22,
+                                          "offset" : [ -27.0, 62.0 ],
+                                          "size" : [ 100, 100 ],
+                                          "text" : "Hello World!",
+                                          "text_alignment" : "center",
+                                          "type" : "label",
+                                          "visible" : false
                                        }
                                     }
                                  ],
