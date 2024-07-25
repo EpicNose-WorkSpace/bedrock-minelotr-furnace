@@ -247,14 +247,23 @@
                                     },
                                     {
                                        "enchantResult" : {
+                                          "bindings" : [
+                                             {
+                                                "binding_collection_name" : "",
+                                                "binding_condition" : "always_when_visible",
+                                                "binding_name" : "#enchantName",
+                                                "binding_name_override" : "#text"
+                                             }
+                                          ],
                                           "font_type" : "default",
                                           "layer" : 22,
                                           "offset" : [ -27.0, 62.0 ],
+                                          "priority" : 22,
                                           "size" : [ 100, 100 ],
-                                          "text" : "Hello World!",
+                                          "text" : "#text",
                                           "text_alignment" : "center",
                                           "type" : "label",
-                                          "visible" : false
+                                          "visible" : true
                                        }
                                     }
                                  ],
