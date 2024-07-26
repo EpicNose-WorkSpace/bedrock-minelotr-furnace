@@ -39,12 +39,12 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                             self, self.OnBlockEntityTick)
 
         #监听客户端引擎事件
-        self.ListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
+        self.ListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.onForgeButtonClicked)
     def UnListenEvent(self):
         super(CustomFurnaceServerSystem, self).UnListenEvent()
         self.UnListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(), modConfig.ServerBlockEntityTickEvent,
                               self, self.OnBlockEntityTick)
-        self.UnListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.TryToEnchantAfterSwap)
+        self.UnListenForEvent(modConfig.ModName, modConfig.ClientSystemName,modConfig.onForgeButtonClickDownClientEvent,self,self.onForgeButtonClicked)
 
     def GetCustomContainerItems(self, dimension, blockName, blockPos):
         # 覆写基类方法，获取自定义熔炉中blockEntityData中的数据
@@ -188,6 +188,40 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
     #         comp.AddModEnchantToInvItem(toSlot, "utmha:lotrenchant_move_speed", 1)
     #     return True
 
+    def onForgeButtonClicked(self,args):
+        # print "服务端已接受拉 下面罗列一下过来的参数"
+        # print args
+        print "运行4"
+        if self.mCurOpenedBlock[args.get("playerId")]:
+            blockInfo=self.mCurOpenedBlock[args.get("playerId")]
+            blockPos = blockInfo.get("blockPos")
+            dimension = blockInfo.get("dimension")
+            blockKey = (blockPos[0], blockPos[1], blockPos[2], dimension)
+            print "运行3"
+            if self.mCustomFurnaceDict.get(blockKey):
+                furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
+                print "运行2"
+                #这里不看2号结果位是否有东西了 单纯执行存储附魔信息的操作
+                if furnaceMgr.mItems[3] is not None:
+                    if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+                        print "附魔书信息"
+                        print furnaceMgr.mItems[3]
+                        if furnaceMgr.mItems[3].get("enchantData") is not None:
+
+                            #进入原版附魔环节
+                            print "a"
+                        elif furnaceMgr.mItems[3].get("modEnchantData") is not None:
+                            print "a"
+
+
+                        # comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
+                        # comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+                        print "运行1"
+                    return True
+
+
+
+        pass
 
     def TryToEnchantAfterSwap(self,args):
         print "运行4"

@@ -17,6 +17,7 @@ class FurnaceManagerBase(object):
         self.mItems = [None, None, None, None]
         self.mRecipeMgr = RecipeManagerBase()
         self.mBlockName = ""
+        self.mEnchantInfo = {"EnchantName": "", "EnchantLevel": 0}
 
     def UpdateBlockData(self, itemList):
         self.mItems = itemList

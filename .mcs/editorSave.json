@@ -31,13 +31,8 @@
                     "/netease_prefab_screen",
                     "/netease_prefab_screen/customFurnacePanel",
                     "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/header",
                     "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot2/itemImg",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot1/itemImg",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot0/itemImg",
-                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel/furnaceSlot3/itemImg"
+                    "/netease_prefab_screen/customFurnacePanel/headerContentStackPanel/contentPanel/rightPanel"
                 ]
             },
             "screen": {
