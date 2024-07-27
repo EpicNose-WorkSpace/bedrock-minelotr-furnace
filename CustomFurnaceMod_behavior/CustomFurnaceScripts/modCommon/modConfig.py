@@ -41,6 +41,8 @@ OnBagChangedEvent = "OnBagChangedEvent"
 OnItemSwapServerEvent = "OnItemSwapServerEvent"
 OnItemDropServerEvent = "OnItemDropServerEvent"
 
+OnEnchantInfoChangedEvent = "onEnchantInfoChangedEvent"
+
 # DisplayJumpingTextFromServerEvent = 'DisplayJumpingTextFromServerEvent'
 # Client Event 客户端事件
 ## Engine 客户端引擎事件

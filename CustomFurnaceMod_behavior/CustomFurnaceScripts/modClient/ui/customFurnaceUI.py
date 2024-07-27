@@ -20,6 +20,8 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         self.mLitProgress = 0
         self.mLitDuration = 0
         self.mBurnProgress = 0
+        self.mEnchantInfo = []
+        self.mModEnchantInfo = []
 
     def Update(self):
         # 执行父类方法
@@ -101,12 +103,19 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         # buttonUIControl.SetButtonTouchDownCallback(self.onForgeButtonClick)
         print "按下回调注册"
 
-
+    #这个绑定似乎是按tick执行的 一秒贼多次
     @ViewBinder.binding(ViewBinder.BF_BindString, "#enchantName")
     def showEnchantName(self):
-        # print "打印展示参数"
+
+
+        print str(self.mEnchantInfo)
+
+        return str(self.mEnchantInfo)
+        # print "打印一下ui内部函数传过来的附魔信息"
+        # print args["mEnchantInfo"]
+        # pass
         # print args
-        return "芜湖起飞"
+        # return str(self.mModEnchantInfo)
 
     @ViewBinder.binding(ViewBinder.BF_ButtonClickDown)
     def forgeButton(self, args):
@@ -133,4 +142,19 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         #     self.mContainerStateMachine.ReceiveEvent(args["ButtonPath"], ButtonEventType.Clicked)
 
         # pass
+
+    def onEnchantInfoUpdate(self,args):
+        # 这个方法拿来执行附魔数据更新 由furnaceClientSys 调用
+        self.mModEnchantInfo = args["mModEnchantInfo"]
+        self.mEnchantInfo = args["mEnchantInfo"]
+        print "成功进入到ui中的方法"
+        # self.testtest()testtest(args)
+        # self.testtest(args)
+        # self.showEnchantName(args)
+        # self.showEnchantName()
+        pass
+
+    # def testtest(self,args):
+    #     print "testtest"
+    #     print args
 

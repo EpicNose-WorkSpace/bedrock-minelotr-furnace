@@ -12,7 +12,8 @@ class FurnaceManagerGas(FurnaceManagerBase):
         super(FurnaceManagerGas, self).__init__()
         self.mRecipeMgr = FurnaceRecipeManager()
         self.mBlockName = "customblocks:custom_furnace"
-
+        self.mEnchantInfo = []      #[(1,2),(2,3)]
+        self.mModEnchantInfo = []   #[{"enchantName":"","enchantLvl":2}]
     def CanBurn(self):
         """判断是否能够烧炼，只有当生成槽没物品或者生成物跟生成槽物品一致且生成槽物品小于最大堆叠数才返回True"""
         if not self.mItems[2]:

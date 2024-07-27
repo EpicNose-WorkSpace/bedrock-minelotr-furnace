@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 #
 import random
+
+from ..serverManager.furnaceMgrGas import FurnaceManagerGas
 from ...modCommon import modConfig
 from ...modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
 from ...modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
@@ -194,6 +196,7 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         print "运行4"
         if self.mCurOpenedBlock[args.get("playerId")]:
             blockInfo=self.mCurOpenedBlock[args.get("playerId")]
+            blockName=self.mCurOpenedBlock[args.get("playerId")].get("blockName")
             blockPos = blockInfo.get("blockPos")
             dimension = blockInfo.get("dimension")
             blockKey = (blockPos[0], blockPos[1], blockPos[2], dimension)
@@ -201,19 +204,42 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
             if self.mCustomFurnaceDict.get(blockKey):
                 furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
                 print "运行2"
+
                 #这里不看2号结果位是否有东西了 单纯执行存储附魔信息的操作
                 if furnaceMgr.mItems[3] is not None:
                     if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
                         print "附魔书信息"
                         print furnaceMgr.mItems[3]
-                        if furnaceMgr.mItems[3].get("enchantData") is not None:
+                        # 进入原版附魔环节
+                        if furnaceMgr.mItems[3].get("enchantData") is not None:   #自定义附魔 和 原版附魔可能同时存在于一本书上 所以这俩循环都要执行
+                            vanillaEnchants = []
+                            for enchant in furnaceMgr.mItems[3].get("enchantData"): #从附魔书中取出一个数组 以字典形式存入mEnchantInfo
+                                id,lvl = enchant
+                                vanillaEnchants.append({'id': id, 'lvl': lvl})
 
-                            #进入原版附魔环节
-                            print "a"
-                        elif furnaceMgr.mItems[3].get("modEnchantData") is not None:
-                            print "a"
+                            furnaceMgr.mEnchantInfo = vanillaEnchants
+                            print "打印一下mEnchantInfo"
+                            print furnaceMgr.mEnchantInfo
 
 
+
+                        # 进入自定义附魔环节
+                        if furnaceMgr.mItems[3].get("modEnchantData") is not None:
+                            # print "a"
+                            modEnchants = []
+                            for modenchant in furnaceMgr.mItems[3].get("modEnchantData"):
+                                id,lvl = modenchant
+                                modEnchants.append({'id': id,'lvl': lvl })
+                            furnaceMgr.mModEnchantInfo = modEnchants
+                            print "打印一下modEnchantInfo"
+                            print furnaceMgr.mModEnchantInfo
+
+                        enchantInfoEventData = self.CreateEventData()
+                        enchantInfoEventData["mEnchantInfo"]=furnaceMgr.mEnchantInfo
+                        enchantInfoEventData["mModEnchantInfo"]=furnaceMgr.mModEnchantInfo
+                        # enchantInfoEventData["blockName"]=blockName
+                        enchantInfoEventData["blockInfo"]=blockInfo #用于screenNode中识别哪一个方块
+                        self.NotifyToClient(args.get("playerId"),modConfig.OnEnchantInfoChangedEvent,enchantInfoEventData)
                         # comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
                         # comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
                         print "运行1"
