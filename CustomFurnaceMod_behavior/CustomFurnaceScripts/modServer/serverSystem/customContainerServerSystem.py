@@ -172,7 +172,9 @@ class CustomContainerServerSystem(serverApi.GetServerSystemCls()):
             eventData = self.CreateEventData()
             eventData["blockName"] = blockName
             self.NotifyToClient(playerId, modConfig.OnUIShouldCloseServerEvent, eventData)
-        del self.mCurOpenedBlock[playerId]
+
+        if self.mCurOpenedBlock[playerId] is not None:
+            del self.mCurOpenedBlock[playerId]
 
     # 被引擎直接执行的父类的重写函数，引擎会执行该Update回调，1秒钟30帧
     def Update(self):

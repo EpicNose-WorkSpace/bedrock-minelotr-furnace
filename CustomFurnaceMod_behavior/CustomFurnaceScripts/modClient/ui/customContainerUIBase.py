@@ -272,6 +272,8 @@ class CustomContainerUIScreenBase(ScreenNode):
             eventData = apiUtil.GetModClientSystem().CreateEventData()
             eventData["playerId"] = apiUtil.GetModClientSystem().GetPlayerId()
             apiUtil.GetModClientSystem().NotifyToServer(modConfig.CloseCustomFurnaceEvent, eventData)
+            # apiUtil.GetModClientSystem().NotifyToClient(apiUtil.GetModClientSystem().GetPlayerId(),modConfig.CloseCustomFurnaceEvent, eventData)
+
             gameComp = compFactory.CreateGame(clientApi.GetLevelId())
             # 延迟0.1秒帧执行，防止刚关闭又触发使用再次打开界面
             gameComp.AddTimer(0.1, self.CloseUI)

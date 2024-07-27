@@ -53,6 +53,7 @@ CloseCustomFurnaceEvent = "CloseCustomFurnaceEvent"
 OnItemSwapClientEvent = "OnItemSwapClientEvent"
 OnItemDropClientEvent = "OnItemDropClientEvent"
 onForgeButtonClickDownClientEvent = "onForgeButtonClickDown"
+# onCloseButtonClickedClientEvent = "onCloseButtonClickedEvent"
 
 # ————————————————————————————————————————————————————————————————————————————————————————————————————
 # Server Component 服务端组件

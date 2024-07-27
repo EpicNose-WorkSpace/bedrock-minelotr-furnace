@@ -94,6 +94,7 @@ class CustomContainerClientSystem(clientApi.GetClientSystemCls()):
             logger.error("%s Has No UIData!!!" % blockName)
         uiNode = self.mUIManager.getUINode(uiData)
         uiNode.CloseUI()
+        # print "喂喂喂？"
 
     def GetPlayerId(self):
         return self.mPlayerId

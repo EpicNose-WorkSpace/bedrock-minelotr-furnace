@@ -108,7 +108,7 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
     def showEnchantName(self):
 
 
-        print str(self.mEnchantInfo)
+        # print str(self.mEnchantInfo)
 
         return str(self.mEnchantInfo)
         # print "打印一下ui内部函数传过来的附魔信息"
@@ -145,14 +145,31 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
 
     def onEnchantInfoUpdate(self,args):
         # 这个方法拿来执行附魔数据更新 由furnaceClientSys 调用
-        self.mModEnchantInfo = args["mModEnchantInfo"]
-        self.mEnchantInfo = args["mEnchantInfo"]
+        # self.mModEnchantInfo = args["mModEnchantInfo"]
+        # self.mEnchantInfo = args["mEnchantInfo"]
         print "成功进入到ui中的方法"
+        print args
+        self.mModEnchantInfo = args["modEnchantData"]
+        # self.mModEnchantInfo = args["allEnchantData"]["modEnchantData"]
+        self.mEnchantInfo = args["enchantData"]
+        # self.mEnchantInfo = args["allEnchantData"]["enchantData"]
         # self.testtest()testtest(args)
         # self.testtest(args)
         # self.showEnchantName(args)
         # self.showEnchantName()
         pass
+
+    def OnCloseClick(self, args):
+        super(CustomFurnaceUIScreen,self).OnCloseClick(args)
+
+        self.mEnchantInfo = []
+        self.mModEnchantInfo = []
+
+        # eventData = apiUtil.GetModClientSystem().CreateEventData()
+        # eventData["playerId"] = apiUtil.GetModClientSystem().GetPlayerId()
+        # apiUtil.GetModClientSystem().NotifyToServer(modConfig.CloseCustomFurnaceEvent, eventData)
+        # clientApi.NotifyToClient(apiUtil.GetModClientSystem().GetPlayerId(),modConfig.onCloseButtonClickedClientEvent, eventData)
+        # print "发送了点击 关闭按钮的事件"
 
     # def testtest(self,args):
     #     print "testtest"

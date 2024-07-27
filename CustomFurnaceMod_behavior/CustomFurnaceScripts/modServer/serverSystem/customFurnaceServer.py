@@ -235,8 +235,8 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                             print furnaceMgr.mModEnchantInfo
 
                         enchantInfoEventData = self.CreateEventData()
-                        enchantInfoEventData["mEnchantInfo"]=furnaceMgr.mEnchantInfo
-                        enchantInfoEventData["mModEnchantInfo"]=furnaceMgr.mModEnchantInfo
+                        enchantInfoEventData["enchantData"]=furnaceMgr.mEnchantInfo
+                        enchantInfoEventData["modEnchantData"]=furnaceMgr.mModEnchantInfo
                         # enchantInfoEventData["blockName"]=blockName
                         enchantInfoEventData["blockInfo"]=blockInfo #用于screenNode中识别哪一个方块
                         self.NotifyToClient(args.get("playerId"),modConfig.OnEnchantInfoChangedEvent,enchantInfoEventData)
