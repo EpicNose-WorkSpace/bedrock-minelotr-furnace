@@ -4,6 +4,7 @@ import random
 
 from ..serverManager.furnaceMgrGas import FurnaceManagerGas
 from ...modCommon import modConfig
+from ...modCommon import EnchantID2Desc
 from ...modServer.serverFactory.furnaceManagerFactory import FurnaceManagerFactory
 from ...modServer.serverSystem.customContainerServerSystem import CustomContainerServerSystem
 from ...modCommon.modCommonUtils import itemUtils
@@ -25,6 +26,9 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         self.mCustomFurnaceDict = {}
         # 初始化可以进行右键打开的容器列表
         self.mCustomContainer = modConfig.CUSTOM_CONTAINER_LIST
+        self.oriEnchantsHere = EnchantID2Desc.oriEnchants
+        self.modEnchantsHere = EnchantID2Desc.modEnchants
+        self.enchantLevelHere = EnchantID2Desc.enchantLevel
 
 
     def IsEnchantBook(self,enchatbookItem):
@@ -74,6 +78,7 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
             furnaceData["isLit"] = furnaceMgr.IsLit()
             furnaceData["litDuration"] = furnaceMgr.GetLitDuration()
             furnaceData["isCooking"] = furnaceMgr.IsCooking()
+            # modConfig.get
             self.NotifyToClient(playerId, modConfig.OnCustomContainerChangedEvent, furnaceData)
 
     def OnBlockEntityTick(self, args):
@@ -247,6 +252,8 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                         enchantInfoEventData["modEnchantData"]=furnaceMgr.mModEnchantInfo
                         # enchantInfoEventData["blockName"]=blockName
                         enchantInfoEventData["blockInfo"]=blockInfo #用于screenNode中识别哪一个方块
+                        enchantInfoEventData["levelId"]=self.mLevelId
+                        self.GetChineseEnchantName(enchantInfoEventData)
                         self.NotifyToClient(args.get("playerId"),modConfig.OnEnchantInfoChangedEvent,enchantInfoEventData)
                         # comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
                         # comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
@@ -257,7 +264,29 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
 
         pass
 
-
+    def GetChineseEnchantName(self,args):
+        comp = serverApi.GetEngineCompFactory().CreateGame(self.mLevelId)
+        # args["enchantNames"]=
+            # comp.GetChinese("entity.wolf.name")
+        # comp = clientApi.GetEngineCompFactory().CreateGame(clientApi.GetLevelId())
+        str2Show = ""
+        for orienchant in args["enchantData"]:
+            # strid = self.oriEnchantsHere.get(orienchant["id"])
+            strid= comp.GetChinese(str(self.oriEnchantsHere.get(orienchant["id"])))
+            # print strid
+            strlvl=self.enchantLevelHere.get(orienchant["lvl"])
+            str2Show = str2Show+strid+strlvl
+            # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        # print str(self.mModEnchantInfo)
+        for modenchant in args["modEnchantData"]:
+            # print modenchant
+            # strid = self.modEnchantsHere.get(str(modenchant["id"]).replace(":", "_"))
+            strid = self.comp.GetChinese(str(self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))))
+            strlvl = self.enchantLevelHere.get(modenchant["lvl"])
+            str2Show = str2Show+strid+strlvl
+            # str2Show =str2Show+self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))+self.enchantLevelHere.get(modenchant["lvl"])
+            # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        args["enchantNames"] = str2Show
 
 
     # def TryToEnchantAfterSwap(self,args):
@@ -279,16 +308,16 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
     #                 return True
 
 
-    def TryToEnchantAfterSwap(self,itemComp,playerId,furnaceMgr,fromItem,toSlot):
+    def TryToEnchantAfterSwap(self,itemComp,playerId,furnaceMgr,fromSlot,toSlot):
         print "交换附魔运行4"
-
+        # print
         if furnaceMgr.mItems[3] is not None:
             print "交换附魔运行6"
             if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
                 print "交换附魔运行7"
                 # furnaceMgr.GetSlot(fromSlot) == 0
-
-                if (furnaceMgr.mItems[2] is not None) or (furnaceMgr.mItems[0] is not None):
+                if furnaceMgr.GetSlot(fromSlot) == 0 or furnaceMgr.GetSlot(fromSlot) == 2:
+                # if (furnaceMgr.mItems[2] is not None) or (furnaceMgr.mItems[0] is not None):
                     print "交换附魔运行5"
                     # comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
                     # self.mEnchantInfo = []  # [(1,2),(2,3)]

@@ -4,8 +4,10 @@ from mod_log import logger
 
 from ..clientUtils import apiUtil
 from ...modCommon import modConfig
+
 from ...modClient.ui.customContainerUIBase import CustomContainerUIScreenBase
 import mod.client.extraClientApi as clientApi
+# import ...modCommon.modConfig as modConfig
 
 class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
 
@@ -22,6 +24,16 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         self.mBurnProgress = 0
         self.mEnchantInfo = []
         self.mModEnchantInfo = []
+        self.mEnchantName2Show = ""
+        # self.mLevelId = 0
+        # self.oriEnchantsHere = EnchantID2Desc.oriEnchants
+        # self.modEnchantsHere = EnchantID2Desc.modEnchants
+        # self.enchantLevelHere = EnchantID2Desc.enchantLevel
+        # self.comp = clientApi.GetEngineCompFactory().CreateGame(self.mLevelId)
+
+
+
+
 
     def Update(self):
         # 执行父类方法
@@ -108,9 +120,33 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
     def showEnchantName(self):
 
 
+        # Chinese = self.comp.GetChinese("entity.wolf.name")
+        # str2Show = ""
+        # for orienchant in self.mEnchantInfo:
+        #     strid = self.oriEnchantsHere.get(orienchant["id"])
+        #     # strid=self.comp.GetChinese(str(self.oriEnchantsHere.get(orienchant["id"])))
+        #     # print strid
+        #     strlvl=self.enchantLevelHere.get(orienchant["lvl"])
+        #     str2Show = str2Show+strid
+        #     # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        # # print str(self.mModEnchantInfo)
+        # for modenchant in self.mModEnchantInfo:
+        #     # print modenchant
+        #     strid = self.modEnchantsHere.get(str(modenchant["id"]).replace(":", "_"))
+        #     # strid = self.comp.GetChinese(str(self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))))
+        #     strlvl = self.enchantLevelHere.get(modenchant["lvl"])
+        #     str2Show = str2Show+strid
+        #     # str2Show =str2Show+self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))+self.enchantLevelHere.get(modenchant["lvl"])
+        #     # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        #
+        #
+        # # EnchantID2Desc.modEnchants
+        # EnchantID2Desc.oriEnchants
+
         # print str(self.mEnchantInfo)
 
-        return str(self.mEnchantInfo)
+        # return str(self.mEnchantInfo)
+        return self.mEnchantName2Show
         # print "打印一下ui内部函数传过来的附魔信息"
         # print args["mEnchantInfo"]
         # pass
@@ -152,6 +188,18 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
         self.mModEnchantInfo = args["modEnchantData"]
         # self.mModEnchantInfo = args["allEnchantData"]["modEnchantData"]
         self.mEnchantInfo = args["enchantData"]
+        self.mEnchantName2Show = args["enchantNames"]
+
+
+
+
+        # comp = clientApi.GetEngineCompFactory().CreateItem(args["levelId"])
+        # print "打印一下所有附魔信息"
+        # print comp.GetAllEnchantsInfo()
+        # comp2 = clientApi.GetEngineCompFactory().CreateGame(args["levelId"])
+        # Chinese = comp2.GetChinese("entity.wolf.name")
+        # clientApi.GetMinecraftEnum().EnchantType.
+
         # self.mEnchantInfo = args["allEnchantData"]["enchantData"]
         # self.testtest()testtest(args)
         # self.testtest(args)
@@ -164,6 +212,7 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
 
         self.mEnchantInfo = []
         self.mModEnchantInfo = []
+        self.mEnchantName2Show = "close"
 
         # eventData = apiUtil.GetModClientSystem().CreateEventData()
         # eventData["playerId"] = apiUtil.GetModClientSystem().GetPlayerId()
@@ -175,3 +224,6 @@ class CustomFurnaceUIScreen(CustomContainerUIScreenBase):
     #     print "testtest"
     #     print args
 
+    def getTranslatedEnchantName2Show(self):   #发现缺参数 那么就把译名随@onEnchantInfoUpdate 一同传入好了
+        # apiUtil.GetModClientSystem().GetEngineCompFactory().CreateItem(levelId)
+        pass

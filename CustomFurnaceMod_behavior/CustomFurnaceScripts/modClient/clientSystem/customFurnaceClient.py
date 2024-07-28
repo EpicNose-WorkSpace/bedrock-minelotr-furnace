@@ -2,6 +2,7 @@
 import mod.client.extraClientApi as clientApi
 from ...modClient.clientSystem.customContainerClientSystem import CustomContainerClientSystem
 from ...modCommon import modConfig
+
 from mod_log import logger
 
 class CustomFurnaceClientSystem(CustomContainerClientSystem):
@@ -9,6 +10,7 @@ class CustomFurnaceClientSystem(CustomContainerClientSystem):
         super(CustomFurnaceClientSystem, self).__init__(namespace, name)
         # key: (x, y, z, dimension), value: enchantData+modEnchantData
         self.pos2enchantData = {}
+
 
     # 监听引擎和服务端脚本事件
     def ListenEvent(self):
@@ -80,6 +82,28 @@ class CustomFurnaceClientSystem(CustomContainerClientSystem):
         # value = {"allEnchantData": {"enchantData": args["enchantData"], "modEnchantData": args["modEnchantData"]}}
         value = {"enchantData": args["enchantData"], "modEnchantData": args["modEnchantData"]}
         self.pos2enchantData.update({key: value})
+
+        # args["levelId"]
+
+        # comp = clientApi.GetEngineCompFactory().CreateGame(clientApi.GetLevelId())
+        # str2Show = ""
+        # for orienchant in args["enchantData"]:
+        #     # strid = self.oriEnchantsHere.get(orienchant["id"])
+        #     strid= comp.GetChinese(str(self.oriEnchantsHere.get(orienchant["id"])))
+        #     # print strid
+        #     strlvl=self.enchantLevelHere.get(orienchant["lvl"])
+        #     str2Show = str2Show+strid+strlvl
+        #     # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        # # print str(self.mModEnchantInfo)
+        # for modenchant in args["modEnchantData"]:
+        #     # print modenchant
+        #     # strid = self.modEnchantsHere.get(str(modenchant["id"]).replace(":", "_"))
+        #     strid = self.comp.GetChinese(str(self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))))
+        #     strlvl = self.enchantLevelHere.get(modenchant["lvl"])
+        #     str2Show = str2Show+strid+strlvl
+        #     # str2Show =str2Show+self.modEnchantsHere.get(str(modenchant["id"]).replace(":","_"))+self.enchantLevelHere.get(modenchant["lvl"])
+        #     # str2Show += EnchantID2Desc.enchantLevel.get(orienchant["lvl"])
+        # args["enchantNames"] = str2Show
 
 
 
