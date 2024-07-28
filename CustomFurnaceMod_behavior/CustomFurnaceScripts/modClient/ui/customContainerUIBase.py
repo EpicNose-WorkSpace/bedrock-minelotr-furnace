@@ -375,7 +375,7 @@ class CustomContainerUIScreenBase(ScreenNode):
             self.SetDurabilityBar(path, item)
             # 设值附魔
             isEnchant = False
-            if item.get("enchantData"):
+            if item.get("enchantData") or item.get("modEnchantData"): #这里增加对自定义附魔的兼容显示？ 本来是if item.get("enchantData"):
                 isEnchant = True
             userData = item.get("userData")
             self.SetUiItem(path + "/itemImg", item["itemName"], item["auxValue"], isEnchant, userData)

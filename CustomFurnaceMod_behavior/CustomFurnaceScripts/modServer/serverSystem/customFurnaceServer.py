@@ -154,7 +154,7 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
 
                 itemComp.SpawnItemToPlayerInv(fromItem, playerId, toSlot)
                 #在这增加一个附魔的逻辑
-                # self.TryToEnchantAfterSwap(playerId,furnaceMgr,fromItem,toSlot)
+                self.TryToEnchantAfterSwap(itemComp,playerId,furnaceMgr,fromSlot,toSlot)
 
             # 从背包放置物品到熔炉
             else:
@@ -165,6 +165,11 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
                 else:
                     itemComp.SetInvItemNum(fromSlot, 0)
         return True
+
+
+
+
+
 
     def OnCustomContainerItemDrop(self, playerId, slot):
         blockEntityComp = compFactory.CreateBlockEntityData(self.mLevelId)
@@ -180,6 +185,9 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
         furnaceMgr.UpdateSlotData(slot, None)
         blockEntityData[slot] = None
         return True
+
+
+
 
 
 
@@ -249,22 +257,58 @@ class CustomFurnaceServerSystem(CustomContainerServerSystem):
 
         pass
 
-    def TryToEnchantAfterSwap(self,args):
-        print "运行4"
-        if self.mCurOpenedBlock[args.get("playerId")]:
-            blockInfo=self.mCurOpenedBlock[args.get("playerId")]
-            blockPos = blockInfo.get("blockPos")
-            dimension = blockInfo.get("dimension")
-            blockKey = (blockPos[0], blockPos[1], blockPos[2], dimension)
-            print "运行3"
-            if self.mCustomFurnaceDict.get(blockKey):
-                furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
-                print "运行2"
-                if (furnaceMgr.mItems[3] is not None) & (furnaceMgr.mItems[0] is not None):
-                    if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
-                        comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
-                        comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
-                        print "运行1"
+
+
+
+    # def TryToEnchantAfterSwap(self,args):
+    #     print "运行4"
+    #     if self.mCurOpenedBlock[args.get("playerId")]:
+    #         blockInfo=self.mCurOpenedBlock[args.get("playerId")]
+    #         blockPos = blockInfo.get("blockPos")
+    #         dimension = blockInfo.get("dimension")
+    #         blockKey = (blockPos[0], blockPos[1], blockPos[2], dimension)
+    #         print "运行3"
+    #         if self.mCustomFurnaceDict.get(blockKey):
+    #             furnaceMgr = self.mCustomFurnaceDict.get(blockKey)
+    #             print "运行2"
+    #             if (furnaceMgr.mItems[3] is not None) & (furnaceMgr.mItems[0] is not None):
+    #                 if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+    #                     comp = serverApi.GetEngineCompFactory().CreateItem(args.get("playerId"))
+    #                     comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+    #                     print "运行1"
+    #                 return True
+
+
+    def TryToEnchantAfterSwap(self,itemComp,playerId,furnaceMgr,fromItem,toSlot):
+        print "交换附魔运行4"
+
+        if furnaceMgr.mItems[3] is not None:
+            print "交换附魔运行6"
+            if self.IsEnchantBook(furnaceMgr.mItems[3].get("itemName")):
+                print "交换附魔运行7"
+                # furnaceMgr.GetSlot(fromSlot) == 0
+
+                if (furnaceMgr.mItems[2] is not None) or (furnaceMgr.mItems[0] is not None):
+                    print "交换附魔运行5"
+                    # comp = serverApi.GetEngineCompFactory().CreateItem(playerId)
+                    # self.mEnchantInfo = []  # [(1,2),(2,3)]
+                    # self.mModEnchantInfo = []  # [{"enchantName":"","enchantLvl":2}]
+                    if furnaceMgr.mEnchantInfo:
+                        print "交换附魔运行2"
+                        for enchant in furnaceMgr.mEnchantInfo:
+                            print "附魔之前打印一下参数"
+                            print furnaceMgr.mEnchantInfo
+                            # print id2,lvl2
+                            itemComp.AddEnchantToInvItem(toSlot, enchant["id"], enchant["lvl"])
+                    if furnaceMgr.mModEnchantInfo:
+                        print "交换附魔运行3"
+                        for enchant2 in furnaceMgr.mModEnchantInfo:
+                            print "附魔之前打印一下参数"
+                            print furnaceMgr.mModEnchantInfo
+                            # print id3,lvl3
+                            itemComp.AddModEnchantToInvItem(toSlot, enchant2["id"], enchant2["lvl"])
+                    # comp.AddModEnchantToInvItem(0, "utmha:lotrenchant_move_speed", 1)
+                    print "交换附魔运行1"
                     return True
 
 
